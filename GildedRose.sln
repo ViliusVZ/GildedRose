@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GildedRose.Console", "GildedRose.Console\GildedRose.Console.csproj", "{A78EB18F-B2E5-4C40-8D55-F21B7DDD4FD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GildedRose.ConsoleApp", "GildedRose.Console\GildedRose.ConsoleApp.csproj", "{A78EB18F-B2E5-4C40-8D55-F21B7DDD4FD8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GildedRose.Tests", "GildedRose.Tests\GildedRose.Tests.csproj", "{50D36F6A-BDCD-401D-97DC-2EF75EDE4A14}"
 EndProject
