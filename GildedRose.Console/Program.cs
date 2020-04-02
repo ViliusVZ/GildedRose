@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace GildedRose.Console
+namespace GildedRose.ConsoleApp
 {
 	public class Program
 	{
+		private static IList<Item> Items;
+
 		public static void Main(string[] args)
 		{
-			System.Console.WriteLine("OMGHAI!");
+			Console.WriteLine("OMGHAI!");
 
-			IList<Item> Items = new List<Item>{
+			Items = new List<Item>{
 				new Item {Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20},
 				new Item {Name = "Aged Brie", SellIn = 2, Quality = 0},
 				new Item {Name = "Elixir of the Mongoose", SellIn = 5, Quality = 7},
@@ -33,22 +35,25 @@ namespace GildedRose.Console
 					SellIn = 5,
 					Quality = 49
 				},
+
 				// this conjured item does not work properly yet
 				new Item {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6}
 			};
 
-			var app = new GildedRose(Items);
+			var app = new GildedRoseWarehouse();
 
 			for (var i = 0; i < 31; i++)
 			{
-				System.Console.WriteLine("-------- day " + i + " --------");
-				System.Console.WriteLine("name, sellIn, quality");
+				Console.WriteLine("-------- day " + i + " --------");
+				Console.WriteLine("name, sellIn, quality");
+
 				for (var j = 0; j < Items.Count; j++)
 				{
-					System.Console.WriteLine(Items[j].Name + ", " + Items[j].SellIn + ", " + Items[j].Quality);
+					Console.WriteLine(Items[j].Name + ", " + Items[j].SellIn + ", " + Items[j].Quality);
 				}
-				System.Console.WriteLine("");
-				app.UpdateQuality();
+
+				Console.WriteLine("");
+				app.UpdateQuality(Items);
 			}
 		}
 	}
