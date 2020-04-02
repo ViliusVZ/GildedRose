@@ -6,11 +6,6 @@ namespace GildedRose.Tests
 {
 	public class UpdateQualityOnSpecialItem
 	{
-		private const string AgedBrieName = "Aged Brie";
-		private const string SulfurasName = "Sulfuras, Hand of Ragnaros";
-		private const string BackstagePassName = "Backstage passes to a TAFKAL80ETC concert";
-		private const string ConjuredItemName = "Conjured Pie";
-
 		private GildedRoseWarehouse _warehouse = new GildedRoseWarehouse();
 
 		public UpdateQualityOnSpecialItem() => _warehouse = new GildedRoseWarehouse();
@@ -19,7 +14,7 @@ namespace GildedRose.Tests
 		// This also covers for "Aged Brie actually increases in Quality the older it gets".
 		public void QualityOfItemIsNeverMoreThanFifty()
 		{
-			var specialItem = new Item() { Name = AgedBrieName, Quality = 50, SellIn = 5 };
+			var specialItem = new Item() { Name = ItemNameDictionary.AgedBrieName, Quality = 50, SellIn = 5 };
 			var items = new List<Item>() { specialItem };
 
 			var expectedQuality = 50;
@@ -34,7 +29,7 @@ namespace GildedRose.Tests
 		[Fact]
 		public void LegendaryItemsNeverReduceInQuality()
 		{
-			var specialItem = new Item() { Name = SulfurasName, SellIn = 0, Quality = 80 };
+			var specialItem = new Item() { Name = ItemNameDictionary.SulfurasName, SellIn = 0, Quality = 80 };
 			var items = new List<Item>() { specialItem };
 
 			var expectedQuality = 80;
@@ -47,7 +42,7 @@ namespace GildedRose.Tests
 		[Fact]
 		public void LegendaryItemsNeverReduceInSellIn()
 		{
-			var specialItem = new Item() { Name = SulfurasName, SellIn = 0, Quality = 80 };
+			var specialItem = new Item() { Name = ItemNameDictionary.SulfurasName, SellIn = 0, Quality = 80 };
 			var items = new List<Item>() { specialItem };
 
 			var expectedSellIn = 0;
@@ -64,7 +59,7 @@ namespace GildedRose.Tests
 		[Fact]
 		public void BackstagePassIncreasesInQualityByTwo_WhenSellInIsTen()
 		{
-			var specialItem = new Item() { Name = BackstagePassName, SellIn = 10, Quality = 30 };
+			var specialItem = new Item() { Name = ItemNameDictionary.BackstagePassName, SellIn = 10, Quality = 30 };
 			var items = new List<Item>() { specialItem };
 
 			var expectedQuality = 32;
@@ -77,7 +72,7 @@ namespace GildedRose.Tests
 		[Fact]
 		public void BackstagePassIncreasesInQualityByThree_WhenSellInIsFive()
 		{
-			var specialItem = new Item() { Name = BackstagePassName, SellIn = 5, Quality = 30 };
+			var specialItem = new Item() { Name = ItemNameDictionary.BackstagePassName, SellIn = 5, Quality = 30 };
 			var items = new List<Item>() { specialItem };
 
 			var expectedQuality = 33;
@@ -90,7 +85,7 @@ namespace GildedRose.Tests
 		[Fact]
 		public void BackstagePassQualityDropsToZero_WhenSellInIsNegativeOne()
 		{
-			var specialItem = new Item() { Name = BackstagePassName, SellIn = 0, Quality = 30 };
+			var specialItem = new Item() { Name = ItemNameDictionary.BackstagePassName, SellIn = 0, Quality = 30 };
 			var items = new List<Item>() { specialItem };
 
 			var expectedQuality = 0;
@@ -107,7 +102,7 @@ namespace GildedRose.Tests
 		[Fact]
 		public void ConjuredItemsDegradeInQualityTwiceAsFast_WhenSellInIsAboveZero()
 		{
-			var specialItem = new Item() { Name = ConjuredItemName, SellIn = 1, Quality = 20 };
+			var specialItem = new Item() { Name = ItemNameDictionary.ConjuredItemName, SellIn = 1, Quality = 20 };
 			var items = new List<Item>() { specialItem };
 
 			var expectedQuality = 18;
@@ -120,7 +115,7 @@ namespace GildedRose.Tests
 		[Fact]
 		public void ConjuredItemsDegradeInQualityTwiceAsFast_WhenSellInIsBelowZero()
 		{
-			var specialItem = new Item() { Name = ConjuredItemName, SellIn = 0, Quality = 20 };
+			var specialItem = new Item() { Name = ItemNameDictionary.ConjuredItemName, SellIn = 0, Quality = 20 };
 			var items = new List<Item>() { specialItem };
 
 			var expectedQuality = 16;
@@ -133,7 +128,7 @@ namespace GildedRose.Tests
 		[Fact]
 		public void QualityOfConjuredItemIsNeverNegative()
 		{
-			var specialItem = new Item() { Name = ConjuredItemName, SellIn = -1, Quality = 3 };
+			var specialItem = new Item() { Name = ItemNameDictionary.ConjuredItemName, SellIn = -1, Quality = 3 };
 			var items = new List<Item>() { specialItem };
 
 			var expectedQuality = 0;
