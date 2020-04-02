@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29920.165
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GildedRose.Console", "GildedRose.Console\GildedRose.Console.csproj", "{A78EB18F-B2E5-4C40-8D55-F21B7DDD4FD8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A78EB18F-B2E5-4C40-8D55-F21B7DDD4FD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A78EB18F-B2E5-4C40-8D55-F21B7DDD4FD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A78EB18F-B2E5-4C40-8D55-F21B7DDD4FD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A78EB18F-B2E5-4C40-8D55-F21B7DDD4FD8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FD9357AE-EE3D-4D3B-B06A-2251E372AF35}
+	EndGlobalSection
+EndGlobal
