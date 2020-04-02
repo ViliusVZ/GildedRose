@@ -9,6 +9,7 @@ namespace GildedRose.Tests
 		private const string AgedBrieName = "Aged Brie";
 		private const string SulfurasName = "Sulfuras, Hand of Ragnaros";
 		private const string BackstagePassName = "Backstage passes to a TAFKAL80ETC concert";
+		private const string ConjuredItemName = "Conjured Pie";
 
 		private GildedRoseWarehouse _warehouse = new GildedRoseWarehouse();
 
@@ -100,5 +101,35 @@ namespace GildedRose.Tests
 		}
 
 		#endregion Backstage passes
+
+		#region Conjured Items
+
+		[Fact]
+		public void ConjuredItemsDegradeInQualityTwiceAsFast_WhenSellInIsAboveZero()
+		{
+			var specialItem = new Item() { Name = ConjuredItemName, SellIn = 1, Quality = 20 };
+			var items = new List<Item>() { specialItem };
+
+			var expectedQuality = 18;
+
+			_warehouse.UpdateQuality(items);
+
+			Assert.Equal(expectedQuality, specialItem.Quality);
+		}
+
+		[Fact]
+		public void ConjuredItemsDegradeInQualityTwiceAsFast_WhenSellInIsBelowZero()
+		{
+			var specialItem = new Item() { Name = ConjuredItemName, SellIn = -1, Quality = 20 };
+			var items = new List<Item>() { specialItem };
+
+			var expectedQuality = 16;
+
+			_warehouse.UpdateQuality(items);
+
+			Assert.Equal(expectedQuality, specialItem.Quality);
+		}
+
+		#endregion Conjured Items
 	}
 }
