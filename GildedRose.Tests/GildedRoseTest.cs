@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using GildedRose.Console;
+using System.Collections.Generic;
 using Xunit;
 
-namespace GildedRose.Console
+namespace GildedRose.Tests
 {
 	public class GildedRoseTest
 	{
@@ -9,7 +10,7 @@ namespace GildedRose.Console
 		public void foo()
 		{
 			IList<Item> Items = new List<Item> { new Item { Name = "foo", SellIn = 0, Quality = 0 } };
-			GildedRose app = new GildedRose(Items);
+			Console.GildedRose app = new Console.GildedRose(Items);
 			app.UpdateQuality();
 			Assert.Equal("fixme", Items[0].Name);
 		}
