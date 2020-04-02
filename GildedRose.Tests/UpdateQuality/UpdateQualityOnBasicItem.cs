@@ -11,9 +11,6 @@ namespace GildedRose.Tests
 		public UpdateQualityOnBasicItem() => _warehouse = new GildedRoseWarehouse();
 
 		[Fact]
-		public void RunWithEmptyCollection() => _warehouse.UpdateQuality(new List<Item>());
-
-		[Fact]
 		public void ReduceQuality()
 		{
 			var basicItem = new Item() { Name = "Basic item", Quality = 10, SellIn = 5 };
@@ -48,6 +45,19 @@ namespace GildedRose.Tests
 			var expectedQuality = 8;
 
 			// Should do a -2 to quality because the SellIn is 0.
+			_warehouse.UpdateQuality(items);
+
+			Assert.Equal(expectedQuality, basicItem.Quality);
+		}
+
+		[Fact]
+		public void QualityOfItemIsNeverNegative()
+		{
+			var basicItem = new Item() { Name = "Basic item", Quality = 0, SellIn = 5 };
+			var items = new List<Item>() { basicItem };
+
+			var expectedQuality = 0;
+
 			_warehouse.UpdateQuality(items);
 
 			Assert.Equal(expectedQuality, basicItem.Quality);
