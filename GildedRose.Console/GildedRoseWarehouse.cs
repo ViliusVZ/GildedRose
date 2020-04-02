@@ -15,6 +15,8 @@ namespace GildedRose.ConsoleApp
 						if (items[i].Name != "Sulfuras, Hand of Ragnaros")
 						{
 							items[i].Quality = items[i].Quality - 1;
+
+							if (items[i].Name.StartsWith("Conjured") && items[i].Quality > 0) items[i].Quality -= 1;
 						}
 					}
 				}
@@ -61,6 +63,8 @@ namespace GildedRose.ConsoleApp
 								if (items[i].Name != "Sulfuras, Hand of Ragnaros")
 								{
 									items[i].Quality = items[i].Quality - 1;
+
+									if (items[i].Name.StartsWith("Conjured") && items[i].Quality > 0) items[i].Quality -= 1;
 								}
 							}
 						}

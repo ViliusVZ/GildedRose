@@ -6,6 +6,8 @@ namespace GildedRose.Tests
 {
 	public class UpdateQualityOnBasicItem
 	{
+		private const string BasicItemName = "Basic item";
+
 		private GildedRoseWarehouse _warehouse = new GildedRoseWarehouse();
 
 		public UpdateQualityOnBasicItem() => _warehouse = new GildedRoseWarehouse();
@@ -13,7 +15,7 @@ namespace GildedRose.Tests
 		[Fact]
 		public void ReduceQuality()
 		{
-			var basicItem = new Item() { Name = "Basic item", Quality = 10, SellIn = 5 };
+			var basicItem = new Item() { Name = BasicItemName, Quality = 10, SellIn = 5 };
 			var items = new List<Item>() { basicItem };
 
 			var expectedQuality = items[0].Quality - 1;
@@ -26,7 +28,7 @@ namespace GildedRose.Tests
 		[Fact]
 		public void ReduceSellIn()
 		{
-			var basicItem = new Item() { Name = "Basic item", Quality = 10, SellIn = 5 };
+			var basicItem = new Item() { Name = BasicItemName, Quality = 10, SellIn = 5 };
 			var items = new List<Item>() { basicItem };
 
 			var expectedSellIn = items[0].SellIn - 1;
@@ -39,7 +41,7 @@ namespace GildedRose.Tests
 		[Fact]
 		public void ReduceQualityByTwoIfSellInIsZero()
 		{
-			var basicItem = new Item() { Name = "Basic item", Quality = 10, SellIn = 0 };
+			var basicItem = new Item() { Name = BasicItemName, Quality = 10, SellIn = 0 };
 			var items = new List<Item>() { basicItem };
 
 			var expectedQuality = 8;
@@ -53,7 +55,7 @@ namespace GildedRose.Tests
 		[Fact]
 		public void QualityOfItemIsNeverNegative()
 		{
-			var basicItem = new Item() { Name = "Basic item", Quality = 0, SellIn = 5 };
+			var basicItem = new Item() { Name = BasicItemName, Quality = 0, SellIn = 5 };
 			var items = new List<Item>() { basicItem };
 
 			var expectedQuality = 0;

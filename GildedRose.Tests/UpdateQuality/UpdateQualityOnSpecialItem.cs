@@ -120,10 +120,23 @@ namespace GildedRose.Tests
 		[Fact]
 		public void ConjuredItemsDegradeInQualityTwiceAsFast_WhenSellInIsBelowZero()
 		{
-			var specialItem = new Item() { Name = ConjuredItemName, SellIn = -1, Quality = 20 };
+			var specialItem = new Item() { Name = ConjuredItemName, SellIn = 0, Quality = 20 };
 			var items = new List<Item>() { specialItem };
 
 			var expectedQuality = 16;
+
+			_warehouse.UpdateQuality(items);
+
+			Assert.Equal(expectedQuality, specialItem.Quality);
+		}
+
+		[Fact]
+		public void QualityOfConjuredItemIsNeverNegative()
+		{
+			var specialItem = new Item() { Name = ConjuredItemName, SellIn = -1, Quality = 3 };
+			var items = new List<Item>() { specialItem };
+
+			var expectedQuality = 0;
 
 			_warehouse.UpdateQuality(items);
 
