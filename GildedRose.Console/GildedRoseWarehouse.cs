@@ -6,82 +6,55 @@ namespace GildedRose.ConsoleApp
 	{
 		public void UpdateQuality(IList<Item> items)
 		{
-			for (var i = 0; i < items.Count; i++)
+			foreach (var item in items)
 			{
-				if (items[i].Name != ItemNameDictionary.AgedBrieName && items[i].Name != ItemNameDictionary.BackstagePassName)
+				if (item.Name != ItemNameDictionary.SulfurasName)
+					item.SellIn -= 1;
+
+				switch (item.Name)
 				{
-					if (items[i].Quality > 0)
-					{
-						if (items[i].Name != ItemNameDictionary.SulfurasName)
+					case ItemNameDictionary.SulfurasName:
+						break;
+
+					case ItemNameDictionary.AgedBrieName:
+						IncreaseItemQuality(item);
+						if (item.SellIn < 0)
+							IncreaseItemQuality(item);
+						break;
+
+					case ItemNameDictionary.BackstagePassName:
+						IncreaseItemQuality(item);
+						if (item.SellIn < 10) IncreaseItemQuality(item);
+						if (item.SellIn < 5) IncreaseItemQuality(item);
+						if (item.SellIn < 0) item.Quality = 0;
+						break;
+
+					default:
+						DecreaseItemQuality(item);
+
+						if (item.Name.StartsWith(ItemNameDictionary.ConjuredItemPrefix) && item.Quality > 0)
 						{
-							items[i].Quality = items[i].Quality - 1;
-
-							if (items[i].Name.StartsWith(ItemNameDictionary.ConjuredItemPrefix) && items[i].Quality > 0) items[i].Quality -= 1;
+							DecreaseItemQuality(item);
+							if (item.SellIn < 0) DecreaseItemQuality(item);
 						}
-					}
-				}
-				else
-				{
-					if (items[i].Quality < 50)
-					{
-						items[i].Quality = items[i].Quality + 1;
 
-						if (items[i].Name == ItemNameDictionary.BackstagePassName)
-						{
-							if (items[i].SellIn < 11)
-							{
-								if (items[i].Quality < 50)
-								{
-									items[i].Quality = items[i].Quality + 1;
-								}
-							}
-
-							if (items[i].SellIn < 6)
-							{
-								if (items[i].Quality < 50)
-								{
-									items[i].Quality = items[i].Quality + 1;
-								}
-							}
-						}
-					}
-				}
-
-				if (items[i].Name != ItemNameDictionary.SulfurasName)
-				{
-					items[i].SellIn = items[i].SellIn - 1;
-				}
-
-				if (items[i].SellIn < 0)
-				{
-					if (items[i].Name != ItemNameDictionary.AgedBrieName)
-					{
-						if (items[i].Name != ItemNameDictionary.BackstagePassName)
-						{
-							if (items[i].Quality > 0)
-							{
-								if (items[i].Name != ItemNameDictionary.SulfurasName)
-								{
-									items[i].Quality = items[i].Quality - 1;
-
-									if (items[i].Name.StartsWith(ItemNameDictionary.ConjuredItemPrefix) && items[i].Quality > 0) items[i].Quality -= 1;
-								}
-							}
-						}
-						else
-						{
-							items[i].Quality = items[i].Quality - items[i].Quality;
-						}
-					}
-					else
-					{
-						if (items[i].Quality < 50)
-						{
-							items[i].Quality = items[i].Quality + 1;
-						}
-					}
+						if (item.SellIn < 0)
+							DecreaseItemQuality(item);
+						break;
 				}
 			}
+		}
+
+		private void DecreaseItemQuality(Item item)
+		{
+			if (item.Quality > 0)
+				item.Quality -= 1;
+		}
+
+		private void IncreaseItemQuality(Item item)
+		{
+			if (item.Quality < 50)
+				item.Quality += 1;
 		}
 	}
 }
